@@ -7,12 +7,31 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📁</text></svg>">
 </head>
 <body>
+  Page title: <input type="text" id="titleInput" placeholder="Enter page title" autofocus>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const title = urlParams.get('title');
     if (title) {
       document.title = title;
     }
+
+    const input = document.getElementById('titleInput');
+    input.value = title || '';
+    input.placeholder = 'Enter page title';
+
+    input.addEventListener('input', (e) => {
+      const newTitle = e.target.value;
+      document.title = newTitle;
+
+      // Update URL query parameter
+      const newUrl = new URL(window.location);
+      if (newTitle) {
+        newUrl.searchParams.set('title', newTitle);
+      } else {
+        newUrl.searchParams.delete('title');
+      }
+      history.replaceState({}, '', newUrl);
+    });
   </script>
 </body>
 </html>
