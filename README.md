@@ -10,6 +10,8 @@ I use [tree style tabs in firefox](https://addons.mozilla.org/en-US/firefox/addo
 
 https://acroca.com/folder/?title=Example
 
+![screenshot](screenshot.png)
+
 ## Alternative
 
 ```
